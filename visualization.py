@@ -365,7 +365,7 @@ with tab1:
             percentage = (count / total_students) * 100 if total_students > 0 else 0
 
             # 修改这里：expanded=True 让所有卡片默认展开
-            with st.expander(f"{profile['icon']} {profile['name']} - {count}人 ({percentage:.1f}%)", expanded=True):
+            with st.expander(f"{profile['icon']} {profile['name']} - {count}人 ({percentage:.1f}%)", expanded=False):
                 st.caption(f"*{profile['en_name']}*")
                 st.info(profile['summary'])
 
