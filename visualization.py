@@ -914,31 +914,29 @@ with tab3:
 with tab4:
     st.markdown("## 🔬 模型科学性验证")
     st.markdown("> ROC 曲线效能分析图 - 验证风险预测模型的准确性")
-
+    
     col1, col2 = st.columns([2, 1])
-
+    
     with col1:
         # 读取并显示 ROC 曲线图
-        try:
-            from PIL import Image
-import os
-
-# 尝试读取图片
-roc_path = find_file("A_Distance_ROC.png")
-if os.path.exists(roc_path):
-    image = Image.open(roc_path)
-    st.image(image, caption="ROC 曲线 - 风险预测模型效能评估", use_container_width=True)
-else:
-    st.warning("未找到 A_Distance_ROC.png 文件")
-    # 显示备用说明
-    st.info("""
-    **ROC 曲线说明：**
-    - 横轴：假正率 (False Positive Rate)
-    - 纵轴：真正率 (True Positive Rate)
-    - AUC 值越接近 1，模型预测效果越好
-    - AUC > 0.9 表示模型具有极高的区分能力
-    """)
-
+        from PIL import Image
+        import os
+        
+        # 尝试读取图片
+        roc_path = find_file("A_Distance_ROC.png")
+        if os.path.exists(roc_path):
+            image = Image.open(roc_path)
+            st.image(image, caption="ROC 曲线 - 风险预测模型效能评估", use_container_width=True)
+        else:
+            st.warning("未找到 A_Distance_ROC.png 文件")
+            st.info("""
+            **ROC 曲线说明：**
+            - 横轴：假正率 (False Positive Rate)
+            - 纵轴：真正率 (True Positive Rate)
+            - AUC 值越接近 1，模型预测效果越好
+            - AUC > 0.9 表示模型具有极高的区分能力
+            """)
+    
     with col2:
         st.markdown("### 📊 模型评估指标")
         st.markdown("""
@@ -955,7 +953,7 @@ else:
             </div>
         </div>
         """, unsafe_allow_html=True)
-
+        
         st.markdown("---")
         st.markdown("**✅ 模型验证结论：**")
         st.markdown("""
@@ -963,7 +961,7 @@ else:
         - 高风险学生能被有效识别
         - 模型可用于实际的学业风险预警
         """)
-
+        
         st.markdown("---")
         st.markdown("**📌 对应任务：**")
         st.markdown("- 开发完成度硬性指标")
