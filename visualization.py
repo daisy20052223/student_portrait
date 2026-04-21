@@ -921,28 +921,23 @@ with tab4:
         # 读取并显示 ROC 曲线图
         try:
             from PIL import Image
-            import os
+import os
 
-            # 读取并显示 ROC 曲线图
-            try:
-                from PIL import Image
-
-                # 自动查找图片
-                roc_path = find_file("A_Distance_ROC.png")
-                if os.path.exists(roc_path):
-                    image = Image.open(roc_path)
-                    st.image(image, caption="ROC 曲线 - 风险预测模型效能评估", use_container_width=True)
-                else:
-                    st.warning("未找到 A_Distance_ROC.png 文件")
-                    # 显示备用说明
-                    st.info("""
-                    **ROC 曲线说明：**
-                    - 横轴：假正率 (False Positive Rate)
-                    - 纵轴：真正率 (True Positive Rate)
-                    - AUC 值越接近 1，模型预测效果越好
-                    """)
-            except Exception as e:
-                st.error(f"读取图片失败: {e}")
+# 尝试读取图片
+roc_path = find_file("A_Distance_ROC.png")
+if os.path.exists(roc_path):
+    image = Image.open(roc_path)
+    st.image(image, caption="ROC 曲线 - 风险预测模型效能评估", use_container_width=True)
+else:
+    st.warning("未找到 A_Distance_ROC.png 文件")
+    # 显示备用说明
+    st.info("""
+    **ROC 曲线说明：**
+    - 横轴：假正率 (False Positive Rate)
+    - 纵轴：真正率 (True Positive Rate)
+    - AUC 值越接近 1，模型预测效果越好
+    - AUC > 0.9 表示模型具有极高的区分能力
+    """)
 
     with col2:
         st.markdown("### 📊 模型评估指标")
