@@ -6,7 +6,7 @@ from streamlit_echarts import st_echarts
 
 st.set_page_config(page_title="学生群体画像", layout="wide")
 
-st.title("📊 学生群体画像分析（ECharts版）")
+st.title("📊 学生群体画像分析")
 
 # =======================
 # 0️⃣ 云端部署：自动查找文件路径
